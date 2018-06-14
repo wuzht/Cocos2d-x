@@ -255,7 +255,8 @@ void Thunder::meet(EventCustom * event) {
 	// 判断游戏是否结束
 	auto exploreAnimation = Animate::create(AnimationCache::getInstance()->getAnimation("exploreAnimation"));
 	for (auto it : enemys) {
-		if (it->getBoundingBox().getMinY() <= player->getBoundingBox().getMinY()) {
+		if (it->getBoundingBox().getMinY() <= player->getBoundingBox().getMinY() 
+			|| (player->getPosition().getDistance(it->getPosition()) < 40)) {
 			SimpleAudioEngine::getInstance()->playEffect("music/explore.wav", false);
 			Sprite* gameOver = Sprite::create("gameOver.png");
 			gameOver->setPosition(visibleSize.width / 2, visibleSize.height / 2);
